@@ -1,5 +1,5 @@
 FROM alpine:edge
 
-RUN apk add --no-cache qbittorrent-nox=4.5.1-r1
+RUN apk add --no-cache qbittorrent-nox=4.5.2-r0
 
 CMD ["qbittorrent-nox"]
