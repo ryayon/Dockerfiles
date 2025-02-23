@@ -1,0 +1,39 @@
+# https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/manifest.yaml
+# https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/manifest.yaml
+# https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/manifest.yaml
+
+dist:
+  module: github.com/ryayon/Dockerfiles/opentelemetry-collector
+  name: ryayon-otelcol
+  description: Ryayon OpenTelemetry Collector
+  version: 0.120.1
+  output_path: ./_build
+
+receivers:
+  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.120.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/kubeletstatsreceiver v0.120.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/filelogreceiver v0.120.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver v0.120.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.120.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sclusterreceiver v0.120.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8seventsreceiver v0.120.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sobjectsreceiver v0.120.1
+
+exporters:
+  - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.120.0
+  - gomod: go.opentelemetry.io/collector/exporter/otlphttpexporter v0.120.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusremotewriteexporter v0.120.1
+
+extensions: []
+
+processors:
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor v0.120.1
+
+connectors: []
+
+providers:
+  - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.26.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.26.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v1.26.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.26.0
+  - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.26.0
